@@ -1,0 +1,15 @@
+.operation-tip {
+    display: none;
+    position: absolute;
+    z-index: 2000;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.8);
+    background-image: url("../img/tip/operation-tip.png");
+    background-size: 306px 173px;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+

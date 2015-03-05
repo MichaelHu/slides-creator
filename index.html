@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>上百度新闻头条，派送贺卡</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=320.1,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no" />
+    <link rel="stylesheet" type="text/css" href="css/myslides-aio.css" />
+
+    <link rel="md5-info" data-name="zepto" href="vendor/zepto-amd.js" /> 
+    <link rel="md5-info" data-name="underscore" href="vendor/underscore.js" /> 
+    <link rel="md5-info" data-name="rocket" href="vendor/rocket-p.js" /> 
+    <link rel="md5-info" data-name="jquery" href="vendor/jquery.js" /> 
+    <link rel="md5-info" data-name="spectrum" href="vendor/spectrum.js" /> 
+    <link rel="md5-info" data-name="iscroll" href="vendor/iscroll.js" /> 
+    <link rel="md5-info" data-name="canvas" href="vendor/Canvas.js" /> 
+    <link rel="md5-info" data-name="cover-loading" href="cover-loading.js" /> 
+    <link rel="md5-info" data-name="rocket-ppt" href="js/rocket-ppt.js" /> 
+    <link rel="md5-info" data-name="main" href="main.js" /> 
+</head>
+<body>
+    <div id="cover-loading">
+        <div class="box">
+            <canvas></canvas>
+            <img>
+            <div class="info">
+                <span class="percent">2</span>
+                <span class="text">%</span>
+            </div>
+        </div>
+    </div>
+    <div id="wrapper"></div>
+</body>
+</html>
+<script type="text/javascript" src="/static/news/myslides/vendor/require.js"></script>
+<script>
+
+(function(){
+
+// config
+global_greetingcard_server = 'http://baijia.baidu.com/ajax/greetingcard';
+
+var host = location.host,
+    path;
+
+if(/(m|wap)\.baidu\.com/.test(host)){
+    path = 'static/news'; 
+}
+else if(/test\.baidu\.com/.test(host)){
+    path = 'template'; 
+}
+
+global_land_page = 'http://'
+    + host + '/' + path + '/myslides/land.html';
+
+
+
+
+var links = document.getElementsByTagName('link'),
+    mods = {}, link; 
+
+for(var i=0; i<links.length; i++){
+    if( ( link = links[i] ).getAttribute('rel') == 'md5-info' ){
+        mods[link.getAttribute('data-name')]
+            = link.getAttribute('href').replace(/\.js$/, '') ;
+    }
+}
+
+require.config({
+    // baseUrl: '/static/news/myslides/vendor'
+    waitSeconds: 0 // disable timeout check
+    , paths: {
+        'zepto': mods['zepto']
+        , 'underscore': mods['underscore']
+        , 'rocket': mods['rocket']
+        , 'jquery': mods['jquery']
+        , 'spectrum': mods['spectrum']
+        , 'iscroll': mods['iscroll']
+        , 'canvas': mods['canvas']
+        , 'cover-loading': mods['cover-loading']
+        , 'rocket-ppt': mods['rocket-ppt']
+        , 'main': mods['main']
+    }
+});
+
+require(['main'], function(){});
+
+})();
+</script>

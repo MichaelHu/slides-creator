@@ -1,0 +1,47 @@
+.global-panel {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+
+    background-color: #000;
+    opacity: 0.8;
+}
+
+.global-panel .panel-wrpper {
+    height: 100%;
+    width: 100%;
+}
+
+.global-panel .panel {
+    height: 100%;
+    overflow: hidden;
+}
+
+.global-panel .panel span {
+    padding: 0 10px;
+    color: #f90;
+    font-size: 22px;
+    line-height: 60px;
+}
+
+.global-panel .panel span.on {
+    color: #f60;
+    border-color: #f60;
+}
+
+.global-panel .panel span.boxalign-left ,
+.global-panel .panel span.boxalign-right ,
+.global-panel .panel span.boxalign-center ,
+.global-panel .panel span.boxalign-bottom ,
+.global-panel .panel span.boxalign-left-a ,
+.global-panel .panel span.boxalign-right-a ,
+.global-panel .panel span.boxalign-bottom-a ,
+.global-panel .panel span.boxalign-center-a {
+    padding: 0;
+    margin: 0 10px;
+    border: 1px solid #f90;
+}
+

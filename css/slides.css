@@ -1,0 +1,49 @@
+body {
+    max-width: 414px;
+}
+
+body, 
+#wrapper{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+}
+
+#wrapper {
+    -webkit-perspective: 5000px;
+}
+
+html * {
+    margin: 0;
+    padding: 0;
+}
+
+.slide {
+    display:none;
+
+    position:absolute;
+
+    /*撑满整个父容器*/
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+
+    overflow: hidden;
+
+    /*最低高度，确保即使没内容，loading也可以展示，同时能遮住下方内容*/
+    /*
+    min-height:600px;
+    */
+
+    /*阻止文本选中*/
+    /*
+    -webkit-user-select:none;
+    */
+
+    background-color: #000;
+    text-align: center;
+}
+

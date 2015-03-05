@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>land page</title>
+</head>
+<body>
+</body>
+</html>
+<script>
+function getQuery(name){
+    var qstr = location.search,
+        rname = new RegExp(name + '=([^&]+)'),
+        match;
+    if((match = qstr.match(rname))){
+        return decodeURIComponent(match[1]);
+    }
+    return null;
+}
+
+var imgUrl = getQuery('imgurl'),
+    cardId = getQuery('cardid'),
+    errno = getQuery('errno'),
+    w = getQuery('w'),
+    h = getQuery('h'),
+    opt = {
+        imgurl: imgUrl
+        , cardid: cardId
+        , errno: errno
+        , w: w
+        , h: h
+    };
+
+parent.__cardAsyncCallback__(opt);
+</script>

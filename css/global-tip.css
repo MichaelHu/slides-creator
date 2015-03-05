@@ -1,0 +1,17 @@
+.global-tip {
+    position: absolute;
+    z-index: 1001;
+    width: 100%;
+}
+
+.global-tip span {
+    display: inline-block;
+    padding: 0 10px;
+    border-radius: 3px;
+    background-color: #000;
+    color: #fff;
+    font-size: 14px;
+    line-height: 24px;
+}
+
+

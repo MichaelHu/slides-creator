@@ -1,0 +1,37 @@
+.control-panel {
+    position: absolute;
+    z-index: 1;
+    height: 26px;
+    right: 0px;
+    top: -25px;
+    font-size: 20px;
+    line-height: 26px;
+}
+
+.control-panel span {
+    float: right;
+    padding: 0 8px;
+    color: #0f0;
+}
+
+.resize-handle {
+    position: absolute;
+    z-index: 2;
+    right: -16px;
+    bottom: -13px;
+    padding: 0 5px;
+    font-size: 20px;
+    line-height: 26px;
+    color: #0f0;
+}
+
+.control-panel span,
+.resize-handle {
+    text-shadow: #000 0px 0px 1px;
+}
+
+.control-panel span.on,
+.resize-handle.on {
+    color: #0b0; 
+}
+
