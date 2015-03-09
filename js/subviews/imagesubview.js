@@ -94,7 +94,7 @@ var ImageSubView = RectSubView.extend({
         gec.on('imagechange.global', me.onimagechange, me);
         gec.on('release.global save4partialedit.global save.global', me.onrelease, me);
 
-        me.$editButton.on('touchstart', function(e){
+        me.$editButton.on('touchstart mousedown', function(e){
             e.stopPropagation();
             e.preventDefault();
 
@@ -110,7 +110,7 @@ var ImageSubView = RectSubView.extend({
             return;
         });
 
-        me.$innerPanel.on('touchstart', function(e){
+        me.$innerPanel.on('touchstart mousedown', function(e){
             e.preventDefault();
             e.stopPropagation();
 

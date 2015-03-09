@@ -1,4 +1,4 @@
-.global-panel {
+.global-panel.mobile {
     position: fixed;
     z-index: 1000;
     top: 0;
@@ -10,38 +10,87 @@
     opacity: 0.8;
 }
 
-.global-panel .panel-wrpper {
+.global-panel.mobile .panel-wrpper {
     height: 100%;
     width: 100%;
 }
 
-.global-panel .panel {
+.global-panel.mobile .panel {
     height: 100%;
     overflow: hidden;
 }
 
-.global-panel .panel span {
+.global-panel.mobile .panel span {
     padding: 0 10px;
     color: #f90;
     font-size: 22px;
     line-height: 60px;
 }
 
-.global-panel .panel span.on {
+.global-panel.mobile .panel span.on {
     color: #f60;
     border-color: #f60;
 }
 
-.global-panel .panel span.boxalign-left ,
-.global-panel .panel span.boxalign-right ,
-.global-panel .panel span.boxalign-center ,
-.global-panel .panel span.boxalign-bottom ,
-.global-panel .panel span.boxalign-left-a ,
-.global-panel .panel span.boxalign-right-a ,
-.global-panel .panel span.boxalign-bottom-a ,
-.global-panel .panel span.boxalign-center-a {
+.global-panel.mobile .panel span.boxalign-left ,
+.global-panel.mobile .panel span.boxalign-right ,
+.global-panel.mobile .panel span.boxalign-center ,
+.global-panel.mobile .panel span.boxalign-bottom ,
+.global-panel.mobile .panel span.boxalign-left-a ,
+.global-panel.mobile .panel span.boxalign-right-a ,
+.global-panel.mobile .panel span.boxalign-bottom-a ,
+.global-panel.mobile .panel span.boxalign-center-a {
     padding: 0;
     margin: 0 10px;
     border: 1px solid #f90;
+}
+
+
+
+/* Desktop */
+.global-panel.desktop {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 200px;;
+    bottom: 0;
+    padding-top: 20px;
+
+    background-color: #000;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.global-panel.desktop .panel-wrpper {
+    height: 100%;
+    width: 100%;
+}
+
+.global-panel.desktop .panel {
+    height: 100%;
+}
+
+.global-panel.desktop .panel span {
+    display: inline-block;
+    padding: 0 5px;
+    margin: 2px 5px;
+    border-radius: 2px;
+    background-color: rgba(255,255,255,0.2);
+    color: #f90;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.global-panel.desktop .panel span.on {
+    color: #f60;
+    border-color: #f60;
+}
+
+.global-panel.desktop .panel span.separator {
+    display: block;
+    height: 1px;
+    margin: 10px 0;
+    background-color: #666;
 }
 

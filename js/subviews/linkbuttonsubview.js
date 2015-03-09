@@ -41,7 +41,7 @@ var LinkButtonSubView = TextSubView.extend({
             return;
         }
 
-        me.$editLinkButton.on('touchstart', function(e){
+        me.$editLinkButton.on('touchstart mousedown', function(e){
             e.stopPropagation();
             e.preventDefault();
 

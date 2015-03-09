@@ -36,7 +36,7 @@ var ImageButtonSubView = ImageSubView.extend({
         }
 
         gec.on('afteredit.global', me.onafteredit, me);
-        me.$editLinkButton.on('touchstart', function(e){
+        me.$editLinkButton.on('touchstart mousedown', function(e){
             e.stopPropagation();
             e.preventDefault();
 

@@ -42,7 +42,7 @@ var ImageWithMaskSubView = ImageSubView.extend({
 
         if(me._isRelease || me._isPartialEdit) return;
 
-        me.$changeMaskBtn.on('touchstart', function(e){
+        me.$changeMaskBtn.on('touchstart mousedown', function(e){
             e.stopPropagation();
             e.preventDefault();
 

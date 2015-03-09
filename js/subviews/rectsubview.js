@@ -138,7 +138,7 @@ var RectSubView = Rocket.SubView.extend({
 
         me.ec.on('pagebeforechange', me.onpagebeforechange, me);
 
-        me.$resizeButton.on('touchstart', function(e){
+        me.$resizeButton.on('touchstart mousedown', function(e){
             me.gec.trigger('clear.global', {target: me});
             me.$resizeButton.addClass('on');
             setTimeout(function(){
@@ -163,7 +163,7 @@ var RectSubView = Rocket.SubView.extend({
             e.preventDefault();
         });
 
-        me.$deleteButton.on('touchstart', function(e){
+        me.$deleteButton.on('touchstart mousedown', function(e){
             me.$deleteButton.addClass('on');
             setTimeout(function(){
                 me.destroy();
@@ -171,7 +171,7 @@ var RectSubView = Rocket.SubView.extend({
 
         });
 
-        me.$lockButton.on('touchstart', function(e){
+        me.$lockButton.on('touchstart mousedown', function(e){
             var $lock = me.$lockButton;
 
             if($lock.hasClass('unlocked')) {
@@ -183,11 +183,11 @@ var RectSubView = Rocket.SubView.extend({
 
         });
 
-        me.$rotateButton.on('touchstart', function(e){
+        me.$rotateButton.on('touchstart mousedown', function(e){
             me.onRotate();
         });
 
-        me.$counterRotateButton.on('touchstart', function(e){
+        me.$counterRotateButton.on('touchstart mousedown', function(e){
             me.onCounterRotate();
         });
 

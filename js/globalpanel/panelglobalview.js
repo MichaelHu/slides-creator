@@ -1,9 +1,10 @@
 var PanelGlobalView = Rocket.GlobalView.extend({
 
-    className: 'global-panel'
+    className: 'global-panel mobile'
 
     , events: {
         'tap .panel span': 'onpanelbuttonclick'
+        , 'mousedown .panel span': 'onpanelbuttonclick'
     }
 
     , contTpl: [
@@ -56,13 +57,91 @@ var PanelGlobalView = Rocket.GlobalView.extend({
         , '</div>'
     ].join('')
 
+    , contTpl4Desktop: [
+          '<div class="panel-wrapper">'
+        ,   '<div class="panel">'
+        ,     '<span class="slide-new">添加页</span>'
+        ,     '<span class="slide-delete">删除页</span>'
+        ,     '<span class="slide-config">页配置</span>'
+        ,     '<span class="slide-prev">前页</span>'
+        ,     '<span class="slide-next">后页</span>'
+
+        ,     '<span class="separator"></span>'
+
+        ,     '<span class="text-new">新文本</span>'
+        ,     '<span class="topnewsimagetext-new">新头条文本</span>'
+
+        ,     '<span class="separator"></span>'
+
+        ,     '<span class="image-new">新图片</span>'
+        ,     '<span class="image-withmask-new">新图片（带遮罩）</span>'
+        ,     '<span class="image-topnews-withmask-new">新头条图片（带遮罩）</span>'
+
+        ,     '<span class="separator"></span>'
+
+        ,     '<span class="image-button-new">新图片按钮</span>'
+        ,     '<span class="image-button-1-new">新图片按钮1</span>'
+        ,     '<span class="image-button-2-new">新图片按钮2</span>'
+
+        ,     '<span class="button-share-new">分享按钮</span>'
+        ,     '<span class="button-release-new">发布按钮</span>'
+        ,     '<span class="button-link-new">链接按钮</span>'
+        ,     '<span class="button-link-1-new">链接按钮1</span>'
+
+
+
+        ,     '<span class="separator"></span>'
+
+        ,     '<span class="boxalign-left">居左</span>'
+        ,     '<span class="boxalign-center">居中</span>'
+        ,     '<span class="boxalign-right">居右</span>'
+        ,     '<span class="boxalign-bottom">居底</span>'
+        ,     '<span class="boxalign-left-a">左固定</span>'
+        ,     '<span class="boxalign-center-a">中线固定</span>'
+        ,     '<span class="boxalign-right-a">右固定</span>'
+        ,     '<span class="boxalign-bottom-a">底固定</span>'
+
+
+        ,     '<span class="separator"></span>'
+
+        ,     '<span class="layer-up">上移一层</span>'
+        ,     '<span class="layer-down">下移一层</span>'
+
+        ,     '<span class="separator"></span>'
+
+        ,     '<span class="align-left">文本居左</span>'
+        ,     '<span class="align-center">文本居中</span>'
+        ,     '<span class="align-right">文本居右</span>'
+        ,     '<span class="font-color">字号&颜色</span>'
+
+        ,     '<span class="separator"></span>'
+
+        ,     '<span class="zoom-in">放大</span>'
+        ,     '<span class="zoom-out">缩小</span>'
+
+        ,     '<span class="separator"></span>'
+
+        ,     '<span class="preview">预览</span>'
+        ,     '<span class="save">保存</span>'
+        ,     '<span class="save4partialedit">保存用于部分编辑</span>'
+        ,     '<span class="release">发布</span>'
+        ,   '</div>'
+        , '</div>'
+    ].join('')
+
     , init: function(options){
         var me = this;
         me.render();
         me.$panel = me.$('.panel');
 
         if(me.gec.editMode == 'FULLEDIT'){
-            me.initIScroll();
+            if($(window).width() > 500){
+                me.$el.removeClass('mobile')
+                    .addClass('desktop');
+            }
+            else{
+                me.initIScroll();
+            }
         }
         else{
             me.hide();
@@ -82,10 +161,13 @@ var PanelGlobalView = Rocket.GlobalView.extend({
 
     , render: function(){
         var me = this;
-        me.$el.html(me.contTpl)
+        me.$el.html($(window).width() > 500 ? me.contTpl4Desktop : me.contTpl)
             .appendTo('body');
+
         // Default to bottom
-        me.positionPanel('bottom');
+        if($(window).width() <= 500){
+            me.positionPanel('bottom');
+        }
     }
 
     , initIScroll: function(){

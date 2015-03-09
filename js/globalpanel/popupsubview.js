@@ -12,9 +12,9 @@ var PopupSubView = Rocket.SubView.extend({
             position: 'fixed'
             , 'z-index': 999
             , top: 0
-            , left: 0
+            , left: $(window).width() > 500 ? 200 : 0 
             , bottom: 0
-            , right: 0
+            , right: $(window).width() > 500 ? 200 : 0 
             , 'background-color': 'rgba(0,0,0,0.7)'
         });
     }

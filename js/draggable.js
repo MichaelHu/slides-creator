@@ -7,16 +7,16 @@ function enableDrag(el, options){
         currentX, currentY,
         opt = options || {};
 
-    $el.on('touchstart.draggable', function(e){
-        var t = e.touches[0];
+    $el.on('touchstart.draggable mousedown.draggable', function(e){
+        var t = e.touches && e.touches[0] || e;
         currentX = lastX = initialX = t.clientX; 
         currentY = lastY = initialY = t.clientY; 
         opt.ondragstart && opt.ondragstart();
         e.stopPropagation();
         e.preventDefault();
 
-        $el.on('touchmove', function(e){
-            var t = e.touches[0];
+        $el.on('touchmove mousemove', function(e){
+            var t = e.touches && e.touches[0] || e;
             lastX = currentX; 
             lastY = currentY; 
             currentX = t.clientX;
@@ -30,11 +30,11 @@ function enableDrag(el, options){
             e.stopPropagation();
             e.preventDefault();
         })
-        .on('touchend', function(e){
+        .on('touchend mouseup', function(e){
             opt.ondragend && opt.ondragend();
             e.stopPropagation();
             e.preventDefault();
-            $el.off('touchmove touchend');
+            $el.off('touchmove touchend mousemove mouseup');
         });
 
     })

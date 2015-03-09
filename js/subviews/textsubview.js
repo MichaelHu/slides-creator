@@ -57,7 +57,7 @@ var TextSubView = RectSubView.extend({
             // me.showBorder();
         }
 
-        me.$editButton.on('touchstart', function(e){
+        me.$editButton.on('touchstart mousedown', function(e){
             e.stopPropagation();
             e.preventDefault();
 
