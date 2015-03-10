@@ -1,0 +1,55 @@
+.vertical-subline ,
+.horizontal-subline {
+    position: absolute;
+    z-index: 20;
+    border: none;
+    border-color: #fff;
+    border-style: solid;
+    box-shadow: 0 0 1px #000;
+}
+
+.vertical-subline {
+    top: 0;
+    bottom: 0;
+    width: 0;
+    border-width: 0 0 0 1px;
+}
+
+.horizontal-subline {
+    left: 0;
+    right: 0;
+    height: 0;
+    border-width: 1px 0 0;
+}
+
+.subline-x-27 {
+    left: 27px;
+}
+
+.subline-x-47 {
+    left: 47px;
+}
+
+.subline-x-367 {
+    left: 367px;
+}
+
+.subline-x-387 {
+    left: 387px;
+}
+
+.subline-y-480 {
+    top: 480px;
+}
+
+.subline-y-568 {
+    top: 568px;
+}
+
+.subline-y-640 {
+    top: 640px;
+}
+
+.subline-y-736 {
+    top: 736px;
+}

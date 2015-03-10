@@ -146,6 +146,8 @@ var PanelGlobalView = Rocket.GlobalView.extend({
         else{
             me.hide();
         }
+
+        me.drawSubline();
     }
 
     , registerEvents: function(){
@@ -519,6 +521,11 @@ var PanelGlobalView = Rocket.GlobalView.extend({
         if(params && params.template){
             this.gec.templateName = params.template;
         }
+    }
+
+    , drawSubline: function(){
+        var me = this;
+        new SublineSubView(null, me);
     }
 
 });

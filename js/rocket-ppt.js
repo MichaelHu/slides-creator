@@ -20,6 +20,7 @@ __inline('globalpanel/popupfontcolorsubview.js')
 __inline('globalpanel/popupimagesubview.js')
 __inline('globalpanel/popupslideconfigsubview.js')
 __inline('globalpanel/popupslidenewsubview.js')
+__inline('globalpanel/sublinesubview.js')
 __inline('globalpanel/subviews/imageuploadsubview.js')
 __inline('globalpanel/subviews/imageurlsubview.js')
 
