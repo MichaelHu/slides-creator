@@ -92,7 +92,6 @@ var RectSubView = Rocket.SubView.extend({
 
         me.showBorder();
         me.isSelected = true;
-        console.log('click');
         me.$el.enableDrag({
             ondrag: function(deltaX, deltaY){
                 me.ondrag.apply(me, arguments);
@@ -138,6 +137,16 @@ var RectSubView = Rocket.SubView.extend({
         me.gec.on('clear.global', me.onclear, me);
 
         me.ec.on('pagebeforechange', me.onpagebeforechange, me);
+
+
+        // Panel's click event is always triggered even if 
+        // mousedown event on <span> within it is stop.
+        // The exact reason is unknown till now.
+        // The temperary solution is to stop click event on panel.
+        me.$panel.on('click', function(e){
+            e.stopPropagation();
+            e.preventDefault();
+        });
 
         me.$resizeButton.on('touchstart mousedown', function(e){
             me.gec.trigger('clear.global', {target: me});
@@ -243,7 +252,6 @@ var RectSubView = Rocket.SubView.extend({
     , onclear: function(params){
         var me = this;
 
-        console.log('clear');
         if(!params || params.target != me){
             me.$panel.hide();
         }

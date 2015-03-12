@@ -110,6 +110,15 @@ var ImageSubView = RectSubView.extend({
             return;
         });
 
+        // Panel's click event is always triggered even if 
+        // mousedown event on <span> within it is stop.
+        // The exact reason is unknown till now.
+        // The temperary solution is to stop click event on panel.
+        me.$innerPanel.on('click', function(e){
+            e.stopPropagation();
+            e.preventDefault();
+        });
+
         me.$innerPanel.on('touchstart mousedown', function(e){
             e.preventDefault();
             e.stopPropagation();

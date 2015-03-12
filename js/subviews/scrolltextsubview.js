@@ -19,7 +19,7 @@ var ScrollTextSubView = TextSubView.extend({
 
         me.viewClass = 'ScrollTextSubView';
 
-        me.$text.css({'height': 'auto', 'overflow': 'visible'});
+        me.$text.css({'height': 'auto', 'overflow': 'visible', 'visibility': 'hidden'});
 
         me.$textWrapper = me.$('.text-wrapper')
             .css({'height': '100%', 'overflow': 'hidden'})
@@ -79,14 +79,18 @@ var ScrollTextSubView = TextSubView.extend({
             lineHeight = parseInt(me.$text.css('line-height')),
             duration = height / lineHeight * 1;
 
+        clearTimeout(me.timer1);
+        clearTimeout(me.timer2);
+
         me.$text
             .css({
                 '-webkit-transform': 'translate(0, ' + wrapperHeight + 'px)'
                 , '-webkit-transition': '-webkit-transform 0s'
+                , 'visibility': 'visible'
             })
             ;
 
-        setTimeout(function(){
+        me.timer1 = setTimeout(function(){
             me.$text
                 .css({
                     '-webkit-transform': 'translate(0, -' + height + 'px)'
@@ -94,41 +98,11 @@ var ScrollTextSubView = TextSubView.extend({
                 })
                 ;
 
-            setTimeout(function(){
+            me.timer2 = setTimeout(function(){
                 me.startToScroll();
             }, duration * 1000 + 300);
         }, 100);
 
-    }
-
-    , onpagebeforechange: function(options){
-        this._super(options);
-    }
-
-    , onafteredit: function(params){
-        var me = this;
-
-        me._super(params);
-    }
-
-    , onfontsize: function(params){
-        var me = this;
-        me._super(params);
-    }
-
-    , onlineheight: function(params){
-        var me = this;
-        me._super(params);
-    }
-
-    , ontextalign: function(params){
-        var me = this;
-        me._super(params);
-    }
-
-    , oncolor: function(params){
-        var me = this;
-        me._super(params);
     }
 
 });
