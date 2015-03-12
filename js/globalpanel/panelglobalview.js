@@ -70,6 +70,7 @@ var PanelGlobalView = Rocket.GlobalView.extend({
 
         ,     '<span class="text-new">新文本</span>'
         ,     '<span class="topnewsimagetext-new">新头条文本</span>'
+        ,     '<span class="scrolltext-new">新滚动文本</span>'
 
         ,     '<span class="separator"></span>'
 
@@ -80,13 +81,13 @@ var PanelGlobalView = Rocket.GlobalView.extend({
         ,     '<span class="separator"></span>'
 
         ,     '<span class="image-button-new">新图片按钮</span>'
-        ,     '<span class="image-button-1-new">新图片按钮1</span>'
-        ,     '<span class="image-button-2-new">新图片按钮2</span>'
+        ,     '<span class="image-button-1-new">新图片按钮（仅编辑模式）</span>'
+        ,     '<span class="image-button-2-new">新图片按钮（仅发布模式）</span>'
 
         ,     '<span class="button-share-new">分享按钮</span>'
         ,     '<span class="button-release-new">发布按钮</span>'
         ,     '<span class="button-link-new">链接按钮</span>'
-        ,     '<span class="button-link-1-new">链接按钮1</span>'
+        ,     '<span class="button-link-1-new">链接按钮（仅发布模式）</span>'
 
 
 
@@ -101,7 +102,6 @@ var PanelGlobalView = Rocket.GlobalView.extend({
         ,     '<span class="boxalign-right-a">右固定</span>'
         ,     '<span class="boxalign-bottom-a">底固定</span>'
 
-
         ,     '<span class="separator"></span>'
 
         ,     '<span class="layer-up">上移一层</span>'
@@ -109,10 +109,13 @@ var PanelGlobalView = Rocket.GlobalView.extend({
 
         ,     '<span class="separator"></span>'
 
+        ,     '<span class="font-color">字号&颜色</span>'
+
+        ,     '<span class="separator"></span>'
+
         ,     '<span class="align-left">文本居左</span>'
         ,     '<span class="align-center">文本居中</span>'
         ,     '<span class="align-right">文本居右</span>'
-        ,     '<span class="font-color">字号&颜色</span>'
 
         ,     '<span class="separator"></span>'
 
@@ -252,7 +255,7 @@ var PanelGlobalView = Rocket.GlobalView.extend({
             var action = RegExp.$1;
             me.gec.trigger('layer.global', {action: action});
         }
-        else if(/(text|topnewsimagetext)-new/.test(cls)){
+        else if(/((?:|topnewsimage|scroll)text)-new/.test(cls)){
             var action = RegExp.$1;
             me.clearState();
             me.gec.trigger('newtext.global', {type: action});

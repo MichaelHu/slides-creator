@@ -92,6 +92,7 @@ var RectSubView = Rocket.SubView.extend({
 
         me.showBorder();
         me.isSelected = true;
+        console.log('click');
         me.$el.enableDrag({
             ondrag: function(deltaX, deltaY){
                 me.ondrag.apply(me, arguments);
@@ -242,6 +243,7 @@ var RectSubView = Rocket.SubView.extend({
     , onclear: function(params){
         var me = this;
 
+        console.log('clear');
         if(!params || params.target != me){
             me.$panel.hide();
         }

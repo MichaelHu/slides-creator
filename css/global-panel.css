@@ -10,7 +10,7 @@
     opacity: 0.8;
 }
 
-.global-panel.mobile .panel-wrpper {
+.global-panel.mobile .panel-wrapper {
     height: 100%;
     width: 100%;
 }
@@ -62,9 +62,10 @@
     opacity: 0.8;
 }
 
-.global-panel.desktop .panel-wrpper {
+.global-panel.desktop .panel-wrapper {
     height: 100%;
     width: 100%;
+    overflow: auto;
 }
 
 .global-panel.desktop .panel {

@@ -50,6 +50,7 @@ __inline('subviews/sharebuttonsubview.js')
 __inline('subviews/linkbuttonsubview.js')
 __inline('subviews/linkreleaseonlybuttonsubview.js')
 __inline('subviews/topnewsimagetextsubview.js')
+// __inline('subviews/scrolltextsubview.js')
 
 
 
@@ -68,6 +69,8 @@ $.extend(
         , PartialEditOnlyButtonSubView: PartialEditOnlyButtonSubView
         , ReleaseOnlyButtonSubView: ReleaseOnlyButtonSubView
         , TopNewsImageTextSubView: TopNewsImageTextSubView
+//         , ScrollTextSubView: ScrollTextSubView
+
         , ReleaseButtonSubView: ReleaseButtonSubView
         , LinkButtonSubView: LinkButtonSubView
         , LinkReleaseOnlyButtonSubView: LinkReleaseOnlyButtonSubView

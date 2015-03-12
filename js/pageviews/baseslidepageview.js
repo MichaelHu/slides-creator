@@ -101,13 +101,28 @@ var BaseSlidePageView = Rocket.PageView.extend({
     }
 
     , onnewtext: function(params){
-        var me = this, textClass;
+        var me = this, textClass,
+            size = {height: 30, width: 200},
+            text = {
+                lineHeight: '36px'
+                , color: '#fff'
+                , textAlign: 'center'
+                , fontSize: '26px'
+            };
 
         if(!me.isActivePage()) return;
         
         switch(params.type){
             case 'topnewsimagetext':
                 textClass = TopNewsImageTextSubView; 
+                break;
+            case 'scrolltext':
+                textClass = ScrollTextSubView; 
+                size.height = 100;
+                text.fontSize = '16px';
+                text.lineHeight = '26px';
+                console.log('scrolltext');
+                console.log(text);
                 break;
             default:
                 textClass = TextSubView; 
@@ -121,16 +136,8 @@ var BaseSlidePageView = Rocket.PageView.extend({
                         top: 100
                         , left: 50
                     }
-                    , size: {
-                        height: 30
-                        , width: 200
-                    }
-                    , text: {
-                        lineHeight: '36px'
-                        , color: '#fff'
-                        , textAlign: 'center'
-                        , fontSize: '26px'
-                    }
+                    , size: size 
+                    , text: text 
                 }
                 , me
             )

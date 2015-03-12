@@ -12,6 +12,7 @@ body {
     height: 100%;
     max-width: 414px;
     margin: 0 auto;
+    overflow: hidden;
 }
 
 #wrapper {
