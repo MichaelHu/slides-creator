@@ -84,6 +84,7 @@ var RectSubView = Rocket.SubView.extend({
                     , me._getZIndex()
                 )
             );
+            me._applyAnim(me._getAnim());
         }, 200);
     }
 
@@ -134,9 +135,11 @@ var RectSubView = Rocket.SubView.extend({
         me.gec.on('zoom.global', me.onzoom, me);
         me.gec.on('layer.global', me.onlayer, me);
         me.gec.on('boxalign.global', me.onboxalign, me);
+        me.gec.on('animset.global', me.onanimset, me);
         me.gec.on('clear.global', me.onclear, me);
 
         me.ec.on('pagebeforechange', me.onpagebeforechange, me);
+        me.ec.on('pageafterchange', me.onpageafterchange, me);
 
 
         // Panel's click event is always triggered even if 
@@ -212,8 +215,10 @@ var RectSubView = Rocket.SubView.extend({
         me.gec.off('zoom.global', me.onzoom, me);
         me.gec.off('layer.global', me.onlayer, me);
         me.gec.off('boxalign.global', me.onboxalign, me);
+        me.gec.off('animset.global', me.onanimset, me);
         me.gec.off('clear.global', me.onclear, me);
         me.ec.off('pagebeforechange', me.onpagebeforechange, me);
+        me.ec.off('pageafterchange', me.onpageafterchange, me);
         me.$resizeButton.off();
         me.$deleteButton.off();
         me.$lockButton.off();
@@ -227,6 +232,18 @@ var RectSubView = Rocket.SubView.extend({
 
         if(to == me.ec){
             me.render();
+            me._initAnimFly && me._initAnimFly();
+        }
+    }
+
+    , onpageafterchange: function(options){
+        var me = this,
+            to = options.to;
+
+        if(to == me.ec){
+            setTimeout(function(){
+                me._startAnimFly && me._startAnimFly();
+            }, 300);
         }
     }
 
@@ -322,6 +339,14 @@ var RectSubView = Rocket.SubView.extend({
             case 'right-a': me.positionRightA(); break;
             case 'center-a': me.positionCenterA(); break;
             case 'bottom-a': me.positionBottomA(); break;
+        }
+    }
+
+    , onanimset: function(params){
+        var me = this;
+        if(!me.isSelected) return;
+        switch(params.type){
+            case 'fly': me._applyAnim({animFly: 1}); break;
         }
     }
 
@@ -421,5 +446,5 @@ var RectSubView = Rocket.SubView.extend({
 
 });
 
-$.extend(RectSubView.prototype, BoxSettingsInterface);
+$.extend(RectSubView.prototype, BoxSettingsInterface, BoxAnimSettingsInterface);
 

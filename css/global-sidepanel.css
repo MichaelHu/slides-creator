@@ -1,0 +1,19 @@
+.sidepanel {
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    right: 0;
+    width: 200px;;
+    bottom: 0;
+    padding-top: 20px;
+
+    background-color: #000;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.sidepanel .anim-config {
+    background: #777;
+    height: 30px;
+}
+

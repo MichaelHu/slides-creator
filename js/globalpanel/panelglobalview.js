@@ -113,6 +113,10 @@ var PanelGlobalView = Rocket.GlobalView.extend({
 
         ,     '<span class="separator"></span>'
 
+        ,     '<span class="animset-fly">飞入</span>'
+
+        ,     '<span class="separator"></span>'
+
         ,     '<span class="align-left">文本居左</span>'
         ,     '<span class="align-center">文本居中</span>'
         ,     '<span class="align-right">文本居右</span>'
@@ -139,8 +143,16 @@ var PanelGlobalView = Rocket.GlobalView.extend({
 
         if(me.gec.editMode == 'FULLEDIT'){
             if($(window).width() > 500){
+
                 me.$el.removeClass('mobile')
                     .addClass('desktop');
+
+                me.appendTo(
+                    new SidePanelSubView(null, me)
+                    , 'body'
+                    , true
+                );
+
             }
             else{
                 me.initIScroll();
@@ -233,6 +245,9 @@ var PanelGlobalView = Rocket.GlobalView.extend({
         }
         else if(/^boxalign-((left|right|center|bottom)(-a)?)/.test(cls)){
             me.gec.trigger('boxalign.global', {type: RegExp.$1});
+        }
+        else if(/^animset-(fly)/.test(cls)){
+            me.gec.trigger('animset.global', {type: RegExp.$1});
         }
         else if(/panel-(bottom|top)/.test(cls)){
             me.clearState();

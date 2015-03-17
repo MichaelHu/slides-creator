@@ -14,6 +14,7 @@ __inline('disable-scrolling.js')
 __inline('draggable.js')
 
 __inline('globalpanel/panelglobalview.js')
+__inline('globalpanel/sidepanelsubview.js')
 __inline('globalpanel/popupsubview.js')
 __inline('globalpanel/popupeditsubview.js')
 __inline('globalpanel/popupfontcolorsubview.js')
@@ -26,6 +27,7 @@ __inline('globalpanel/subviews/imageurlsubview.js')
 
 __inline('interfaces/settingsutils.js')
 __inline('interfaces/boxsettings.js')
+__inline('interfaces/boxanimsettings.js')
 __inline('interfaces/commonsettings.js')
 
 __inline('pageviews/baseslidepageview.js')

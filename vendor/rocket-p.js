@@ -2902,7 +2902,7 @@ function get(name){
     return animations[name];
 }
 
-function pageTransition(inPage, outPage, inClass, outClass){
+function pageTransition(inPage, outPage, inClass, outClass, callback){
 
     var outPageEnd,
         inPageEnd,
@@ -2972,6 +2972,8 @@ function pageTransition(inPage, outPage, inClass, outClass){
             .off('webkitAnimationEnd');
 
         isAnimating = false;
+
+        callback && callback();
     }
 
 }
@@ -3032,7 +3034,7 @@ function slideLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromLeft';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3067,7 +3069,7 @@ function slideTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromTop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3103,7 +3105,7 @@ function slidefadeLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromLeftFade';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3139,7 +3141,7 @@ function slidefadeTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromTopFade';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3175,7 +3177,7 @@ function fadeslideLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromLeft pt-page-ontop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3211,7 +3213,7 @@ function fadeslideTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromTop pt-page-ontop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3247,7 +3249,7 @@ function slideeasingLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromLeft';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3283,7 +3285,7 @@ function slideeasingTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromTop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3319,7 +3321,7 @@ function slidescaleupLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-scaleUp';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3355,7 +3357,7 @@ function slidescaleupTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-scaleUp';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3391,7 +3393,7 @@ function scaledownslideLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromLeft pt-page-ontop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3427,7 +3429,7 @@ function scaledownslideTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromTop pt-page-ontop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3463,7 +3465,7 @@ function flipLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-flipInLeft pt-page-delay500';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3498,7 +3500,7 @@ function flipTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-flipInTop pt-page-delay500';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3528,7 +3530,7 @@ function scaledownscaleupdown(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-scaleUpDown pt-page-delay300'
         ;
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3559,7 +3561,7 @@ function scaledownupscaleup(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-scaleUp pt-page-delay300'
         ;
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3590,7 +3592,7 @@ function rotatefallscaleup(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-scaleUp'
         ;
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3621,7 +3623,7 @@ function rotatenewspaper(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateInNewspaper pt-page-delay500'
         ;
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3652,7 +3654,7 @@ function rotateslide(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateSlideIn'
         ;
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3683,7 +3685,7 @@ function rotateslidedelay(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateSlideIn pt-page-delay200'
         ;
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3714,7 +3716,7 @@ function scaledowncenterscaleupcenter(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-scaleUpCenter pt-page-delay400'
         ;
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3750,7 +3752,7 @@ function rotateslideLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromLeft pt-page-delay200 pt-page-ontop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3786,7 +3788,7 @@ function rotateslideTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromTop pt-page-delay200 pt-page-ontop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3822,7 +3824,7 @@ function rotatepushslideLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromLeft';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3858,7 +3860,7 @@ function rotatepushslideTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromTop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3894,7 +3896,7 @@ function rotateroomLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateRoomRightIn';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3931,7 +3933,7 @@ function rotateroomTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateRoomBottomIn';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -3968,7 +3970,7 @@ function rotatecubeLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateCubeRightIn';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -4005,7 +4007,7 @@ function rotatecubeTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateCubeBottomIn';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -4042,7 +4044,7 @@ function rotatecarouselLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateCarouselRightIn';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -4080,7 +4082,7 @@ function rotatecarouselTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateCarouselBottomIn';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -4117,7 +4119,7 @@ function rotatefoldmovefadeLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromLeftFade';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -4154,7 +4156,7 @@ function rotatefoldmovefadeTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-moveFromTopFade';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -4191,7 +4193,7 @@ function movefaderotateunfoldLR(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateUnfoldLeft';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
@@ -4228,7 +4230,7 @@ function movefaderotateunfoldTB(currentEle, nextEle, dir, callback) {
         inClass = 'pt-page-rotateUnfoldTop';
     }
 
-    Animation.pageTransition(nextEle, currentEle, inClass, outClass);
+    Animation.pageTransition(nextEle, currentEle, inClass, outClass, callback);
 
 };
 
