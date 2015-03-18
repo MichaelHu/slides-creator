@@ -17,3 +17,17 @@
     height: 30px;
 }
 
+.sidepanel .anim-config .title,
+.sidepanel .anim-config .content{
+    font: normal normal normal 14px/26px arial;
+}
+
+.sidepanel .anim-config .title{
+    float: left;
+    width: 60px;
+    color: #fff;
+}
+
+.sidepanel .anim-config .content{
+    margin-left: 65px;
+}

@@ -5,7 +5,8 @@ var BoxAnimSettingsInterface = {
         $el = $el || me.$el;
         $.extend(
             anim
-            , me._getSettings('anim_fly', 'animFly', $el) 
+            , me._getSettings('anim_fly_from', 'animFlyFrom', $el) 
+            , me._getSettings('anim_fly_duration', 'animFlyDuration', $el) 
         );
 
         return anim;
@@ -14,7 +15,7 @@ var BoxAnimSettingsInterface = {
     , _setAnim: function(anim, $el){
         var me = this;
         $el = $el || me.$el;
-        me._setSettings(anim, 'anim_fly', 'animFly', $el);
+        me._setSettings(anim, 'anim_fly_from', 'animFlyFrom', $el);
     }
 
     , _applyAnim: function(anim, $el){
@@ -22,42 +23,54 @@ var BoxAnimSettingsInterface = {
         var me = this;
         $el = $el || me.$el;
 
-        if(anim.animFly){
-            $el.css('visibility', 'hidden');
+        if(anim.animFlyFrom){
+            if(anim.animFlyFrom == 'no'){
+                $el.css('visibility', 'visible');
+                me._initAnimFly = null;
+                me._startAnimFly = null;
+                anim.animFlyFrom = null;
+            }
+            else{
 
-            me._initAnimFly = function(){
                 $el.css('visibility', 'hidden');
-            };
 
-            me._startAnimFly = function(){
-                var width = $el.width(),
-                    height = $el.height(),
-                    top = parseInt($el.css('top')),
-                    left = parseInt($el.css('left')),
-                    duration = 1,
-                    contHeight = me.ec.$el.height(),
-                    contWidth = me.ec.$el.width();
+                me._initAnimFly = function(){
+                    $el.css('visibility', 'hidden');
+                };
 
-                $el 
-                    .css({
-                        '-webkit-transform': 'translate(-' 
-                            + ( left + 30 ) + 'px,' + ( contHeight - top ) + 'px)'
-                        , '-webkit-transition': '-webkit-transform 0s'
-                        , 'visibility': 'visible'
-                    })
-                    ;
+                me._startAnimFly = function(){
+                    var width = $el.width(),
+                        height = $el.height(),
+                        top = parseInt($el.css('top')),
+                        left = parseInt($el.css('left')),
+                        duration = anim.animFlyDuration || 1,
+                        contHeight = me.ec.$el.height(),
+                        contWidth = me.ec.$el.width();
 
-                setTimeout(function(){
-                    $el
+                    $el 
                         .css({
-                            '-webkit-transform': 'translate(0, 0)'
-                            , '-webkit-transition': '-webkit-transform ' + duration + 's ease-out'
+                            '-webkit-transform': 'translate(-' 
+                                + ( left + 30 ) + 'px,' + ( contHeight - top ) + 'px)'
+                            , '-webkit-transition': '-webkit-transform 0s'
+                            , 'visibility': 'visible'
                         })
                         ;
-                }, 100);
+
+                    setTimeout(function(){
+                        $el
+                            .css({
+                                '-webkit-transform': 'translate(0, 0)'
+                                , '-webkit-transition': '-webkit-transform ' + duration + 's ease-out'
+                            })
+                            ;
+                    }, 100);
+
+                }
 
             }
+
         }
+
 
         me._setAnim(anim, $el);
     }

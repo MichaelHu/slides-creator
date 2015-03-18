@@ -99,6 +99,7 @@ var RectSubView = Rocket.SubView.extend({
             }
         });
 
+        me.gec.trigger('beforeanimconfig.global', me._getAnim());
     }
 
     , ensureResizeHandle: function(){
@@ -137,6 +138,8 @@ var RectSubView = Rocket.SubView.extend({
         me.gec.on('boxalign.global', me.onboxalign, me);
         me.gec.on('animset.global', me.onanimset, me);
         me.gec.on('clear.global', me.onclear, me);
+
+        me.gec.on('afteranimconfig.global', me.onafteranimconfig, me);
 
         me.ec.on('pagebeforechange', me.onpagebeforechange, me);
         me.ec.on('pageafterchange', me.onpageafterchange, me);
@@ -217,6 +220,8 @@ var RectSubView = Rocket.SubView.extend({
         me.gec.off('boxalign.global', me.onboxalign, me);
         me.gec.off('animset.global', me.onanimset, me);
         me.gec.off('clear.global', me.onclear, me);
+        me.gec.off('afteranimconfig.global', me.onafteranimconfig, me);
+
         me.ec.off('pagebeforechange', me.onpagebeforechange, me);
         me.ec.off('pageafterchange', me.onpageafterchange, me);
         me.$resizeButton.off();
@@ -284,6 +289,13 @@ var RectSubView = Rocket.SubView.extend({
         }
     }
 
+    , onafteranimconfig: function(params){
+        var me = this;
+
+        if(!params || !me.isSelected) return;
+        me._applyAnim(params);
+    }
+
     , ondrag: function(deltaX, deltaY){
         var me = this,
             top = parseInt(me.$el.css('top')) 
@@ -346,7 +358,7 @@ var RectSubView = Rocket.SubView.extend({
         var me = this;
         if(!me.isSelected) return;
         switch(params.type){
-            case 'fly': me._applyAnim({animFly: 1}); break;
+            case 'fly': me._applyAnim({animFlyFrom: 'south'}); break;
         }
     }
 
